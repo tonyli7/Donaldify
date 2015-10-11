@@ -10,6 +10,11 @@ Backend: Ishraq Bhuiyan
 
 Middleware: Darwin Chiu
 
+# General Work Structure
+1) <b>ALWAYS</b> pull before you start working...
+2) Let us know when you're working on the project so as to minimize however many merge conflicts we will have
+3) :)
+
 # Deadlines
 - by 10/12
   - Login (hardcoded or w/e)
@@ -29,4 +34,3 @@ Middleware: Darwin Chiu
   - can sort by time/name/etc.
 - Create a Blog button
 - Comments
--
