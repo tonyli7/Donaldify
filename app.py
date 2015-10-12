@@ -14,7 +14,27 @@ def index():
 @app.route("/login",methods=["GET","POST"])
 def login():
     if request.method=="GET":
-        return render_template("login.html")
+        if 'un' in session and session['un'] != 0:
+            user = session['un']
+            return render_template("login.html",un=user)
+        else:
+            return render_template("login.html",unlogged="You are not currently logged in.")
+    else:
+        button = request.form['button']
+        user = request.form['username']
+        passwd = request.form['password']
+        if button=="logout":
+            session['un'] = 0
+            session['pw'] = 0
+            return render_template("home.html")
+        else:
+            if utils.loginauth(user,passwd):
+                session['un'] = user
+                session['pw'] = passwd
+                return redirect(url_for("home"))
+            else:
+                error = "INVALID USERNAME AND/OR PASSWORD"
+                return render_template("login.html",error=error)
 
 @app.route("/register")
 def register():
