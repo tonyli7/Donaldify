@@ -23,9 +23,7 @@ def Post(username,title,content):
     c.execute('insert into post values("'+username+'","'+title+'","'+content+'")')
     conn.commit()
 
-Post('dar','ge','gerhtrjrt')
-c = getAllPosts()
-print (c)
+#how to read post table, for loop, index 0 is user, 1 is title, 2 is content
 
 
 
