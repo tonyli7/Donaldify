@@ -1,14 +1,14 @@
 # imports
 
 from flask import Flask, render_template, request, session, redirect, url_for
-import sqlite3
+import sqlite3, utils
 
 #flask
 app = Flask(__name__)
 
 @app.route("/")
 @app.route("/home")
-def index():
+def home():
     return render_template("home.html")
 
 @app.route("/login",methods=["GET","POST"])
@@ -20,21 +20,23 @@ def login():
         else:
             return render_template("login.html",unlogged="You are not currently logged in.")
     else:
-        button = request.form['button']
-        user = request.form['username']
-        passwd = request.form['password']
-        if button=="logout":
-            session['un'] = 0
-            session['pw'] = 0
-            return render_template("home.html")
+        #button = request.form['button']
+        user = request.form['in_username']
+        passwd = request.form['in_password']
+
+        if utils.loginauth(user,passwd):
+            session['un'] = user
+            session['pw'] = passwd
+            return redirect(url_for("home"))
         else:
-            if utils.loginauth(user,passwd):
-                session['un'] = user
-                session['pw'] = passwd
-                return redirect(url_for("home"))
-            else:
-                error = "INVALID USERNAME AND/OR PASSWORD"
-                return render_template("login.html",error=error)
+            error = "INVALID USERNAME AND/OR PASSWORD"
+            return render_template("login.html",error=error)
+
+@app.route("/logout")
+def logout():
+    session['un'] = 0
+    session['pw'] = 0
+    return render_template("home.html")
 
 @app.route("/register")
 def register():
