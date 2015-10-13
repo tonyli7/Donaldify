@@ -17,9 +17,12 @@ def getAllPosts():
     c.execute('select * from post;')
     return c.fetchall()
 
-def Post(username,title,content):
+def Post(username,tname,content):
     conn = sqlite3.connect('bloginator.db')
     c = conn.cursor()
+    r = c.execute('select * from post where title = tname')
+    for i in r:
+        return False
     c.execute('insert into post values("'+username+'","'+title+'","'+content+'")')
     conn.commit()
 
