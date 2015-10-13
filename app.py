@@ -7,11 +7,10 @@ import sqlite3, utils
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/home", methods=["GET"])
+@app.route("/home")
 def home():
-    if request.method=="GET":
-        user = session['un']
-        return render_template("home.html",un=user)
+    if 'un' in session and session['un'] != 0:
+        return render_template("home.html",un=session['un'])
     else:
         return render_template("home.html")
 
@@ -31,7 +30,7 @@ def login():
         if utils.loginauth(user,passwd):
             session['un'] = user
             session['pw'] = passwd
-            return redirect(url_for("home"))
+            return redirect(url_for("blog"))
         else:
             error = "INVALID USERNAME AND/OR PASSWORD"
             return render_template("login.html",error=error)

@@ -18,10 +18,17 @@
     <h1 class="text-center">bananas</h1>
   </div>
   <br>
-
+  {% if un %}
+    {% if un!=0 %}
+    <div class="col-md-1 col-md-offset-5">
+      <a class="btn btn-default" href="logout" role="logout-btn">LOGOUT</a>
+    </div>
+    {% endif %}
+  {% else %}
   <div class="col-md-1 col-md-offset-5">
     <a class="btn btn-default" href="login" role="login-btn">LOGIN</a>
   </div>
+  {% endif %}
 
   <div class="col-md-1">
     <a class="btn btn-default" href="register" role="register-btn">REGISTER</a>
