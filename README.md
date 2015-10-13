@@ -12,16 +12,17 @@ Middleware: Darwin Chiu
 
 # General Work Structure
 1) <b>ALWAYS</b> pull before you start working...
+
 2) Let us know when you're working on the project so as to minimize however many merge conflicts we will have
+
 3) :)
 
 # Deadlines
 - by 10/12
-  - Login (hardcoded or w/e)
-  - Some Secret Page (page you view the blogposts in)
+  - Login (hardcoded)
+  - Some Secret Page (page you will view the blogposts in)
   - Database with UN/PW 
-  - the app
-  - routes
+  - the app (w/ the routes)
 
 # Reach Structure
 - Home (About) Page
