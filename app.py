@@ -9,7 +9,11 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template("home.html")
+    if request.method=="GET":
+        user = session['un']
+        return render_template("home.html",un=user)
+    else:
+        return render_template("home.html")
 
 @app.route("/login",methods=["GET","POST"])
 def login():
