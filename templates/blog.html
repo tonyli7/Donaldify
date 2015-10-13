@@ -11,27 +11,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-
-  <div class="container-fluid">
-    <h1 class="text-center">bananas</h1>
-  </div>
   <br>
-
-  <div class="col-md-1 col-md-offset-5">
-    <a class="btn btn-default" href="login" role="login-btn">LOGIN</a>
-  </div>
-
-  <div class="col-md-1">
-    <a class="btn btn-default" href="register" role="register-btn">REGISTER</a>
-  </div>
-  <br><br>
   <div class="container text-center">
     {% if un %}
     {{ un }}
     {% endif %}
   </div>
 </body>
-</html>
-

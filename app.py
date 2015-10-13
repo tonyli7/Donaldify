@@ -7,7 +7,7 @@ import sqlite3, utils
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/home")
+@app.route("/home", methods=["GET"])
 def home():
     if request.method=="GET":
         user = session['un']
@@ -46,8 +46,14 @@ def logout():
 def register():
     return render_template("register.html")
 
-# @app.route("/blog")
-
+@app.route("/blog", methods=["GET", "POST"])
+def blog():
+    if 'un' not in session or session['un']==0:
+        return redirect(url_for("home"))
+    else:
+        user = session['un']
+        return render_template("blog.html",un=user)
+        
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "whatsthisfor"
