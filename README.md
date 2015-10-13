@@ -35,3 +35,6 @@ Middleware: Darwin Chiu
   - can sort by time/name/etc.
 - Create a Blog button
 - Comments
+
+# Third Party Help
+- Bootstrap (for formatting HTML pages)
