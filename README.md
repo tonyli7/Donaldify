@@ -17,12 +17,14 @@ Middleware: Darwin Chiu
 
 3) :)
 
-# Deadlines
-- by 10/12
+# Changelog
+- 10/12
   - Login (hardcoded)
   - Some Secret Page (page you will view the blogposts in)
   - Database with UN/PW 
   - the app (w/ the routes)
+- 10/14
+  - the SQLite database functions for writing & viewing are written; only need to be implemented/connected
 
 # Reach Structure
 - Home (About) Page
