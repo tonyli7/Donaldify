@@ -25,6 +25,7 @@ Middleware: Darwin Chiu
   - the app (w/ the routes)
 - 10/14
   - the SQLite database functions for writing & viewing are written; only need to be implemented/connected
+  - the "View All (Posts)" is working now!
 
 # Reach Structure
 - Home (About) Page
