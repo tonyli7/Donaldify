@@ -1,6 +1,6 @@
 # imports
 
-from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session, redirect, url_for,Markup
 import sqlite3, utils
 
 #flask
@@ -51,7 +51,14 @@ def blog():
         return redirect(url_for("home"))
     else:
         user = session['un']
-        return render_template("blog.html",un=user)
+        s = ""
+        stories = utils.getAllPosts()
+        for p in stories:
+            s += "<h1> <a href='story/%s'> %s</a> </h1>" %(p[1], p[1])
+            s += "<h2> Posted by: %s </h2>" %p[0]
+            s += "<h3> %s </h3>" %p[2] + "<hr>"
+        s = Markup(s)
+        return render_template("blog.html",un=user,stories=s)
         
 if __name__ == "__main__":
     app.debug = True

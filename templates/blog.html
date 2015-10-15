@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <!--head template from The New Boston-->
 <html lang="en">
-<head>
-  <title>home</title>
+	<head>
+		<title>home</title>
 
-  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</head>
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</head>
 
-<body>
-  <br>
-  <div class="container text-center">
-    {% if un %}
-    {{ un }}
-    {% endif %}
-  </div>
+	<body>
+		<br>
+		<div class="container text-center">
+			{% if un %}
+			{{ un }}
+			{% endif %}
+		</div>
 
 
-  <div class="col-md-1 col-md-offset-5">
-    <a class="btn btn-default" href="logout" role="logout-btn">LOGOUT</a>
-  </div>
+		<div class="col-md-1 col-md-offset-5">
+			<a class="btn btn-default" href="logout" role="logout-btn">LOGOUT</a>
+		</div>
 
-  <div class="col-md-1">
-    <a class="btn btn-default" href="home" role="home-btn">HOME</a>
-  </div>
-  
-</body>
+		<div class="col-md-1">
+			<a class="btn btn-default" href="home" role="home-btn">HOME</a>
+		</div>
+		<p> {{stories}} </p>
+	</body>
