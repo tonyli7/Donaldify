@@ -66,8 +66,8 @@ def story(title=""):
         return redirect(url_for("home"))
     else:
         user = session['un']
-        story = utils.getPost(title)[0]
-        if not story:
+        story = utils.getPost(title)
+        if len(story) == 0:
             return redirect(url_for("blog"))
         else:
             return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
