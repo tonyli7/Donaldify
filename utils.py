@@ -20,7 +20,6 @@ def getAllPosts():
 def Post(username,title,content):
     conn = sqlite3.connect('bloginator.db')
     c = conn.cursor()
-    c = conn.cursor()
     r = c.execute('select * from post where title = "'+title+'"')
     for i in r:
         return False
