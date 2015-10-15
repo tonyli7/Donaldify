@@ -59,7 +59,17 @@ def blog():
             s += "<h3> %s </h3>" %p[2] + "<hr>"
         s = Markup(s)
         return render_template("blog.html",un=user,stories=s)
+
+@app.route("/story/<title>", methods=["GET", "POST"])
+def story(title=""):
+    if 'un' not in session or session['un']==0:
+        return redirect(url_for("home"))
+    else:
+        user = session['un']
+        story = utils.getPost(title)[0]
+        return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
         
+    
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "whatsthisfor"
