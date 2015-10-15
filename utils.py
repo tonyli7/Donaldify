@@ -20,11 +20,18 @@ def getAllPosts():
 def Post(username,title,content):
     conn = sqlite3.connect('bloginator.db')
     c = conn.cursor()
+    c = conn.cursor()
     r = c.execute('select * from post where title = "'+title+'"')
     for i in r:
         return False
     c.execute('insert into post values("'+username+'","'+title+'","'+content+'")')
     conn.commit()
+
+def getPost(title):
+    conn = sqlite3.connect('bloginator.db')
+    c = conn.cursor()
+    c.execute('select * from post where title = "'+title+'"')
+    return c.fetchall()
 
 #how to read post table, for loop, index 0 is user, 1 is title, 2 is content
 
