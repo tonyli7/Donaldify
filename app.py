@@ -67,7 +67,10 @@ def story(title=""):
     else:
         user = session['un']
         story = utils.getPost(title)[0]
-        return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
+        if not story:
+            return redirect(url_for("blog"))
+        else:
+            return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
         
     
 if __name__ == "__main__":
