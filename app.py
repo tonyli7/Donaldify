@@ -70,6 +70,7 @@ def story(title=""):
         if len(story) == 0:
             return redirect(url_for("blog"))
         else:
+            story = story[0]
             return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
         
     
