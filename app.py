@@ -6,13 +6,14 @@ import sqlite3, utils
 #flask
 app = Flask(__name__)
 
-@app.route("/")
-@app.route("/home")
+@app.route("/", methods=["GET","POST"])
+@app.route("/home", methods=["GET","POST"])
 def home():
     if 'un' in session and session['un'] != 0:
         return render_template("home.html",un=session['un'])
     else:
-        return render_template("home.html")
+        #return render_template("home.html")
+        return login()
 
 @app.route("/about")
 def about():
@@ -25,7 +26,7 @@ def login():
             user = session['un']
             return redirect(url_for("home"))
         else:
-            return render_template("login.html",unlogged="You are not currently logged in.")
+            return render_template("home.html",unlogged="You are not currently logged in.")
     else:
         #button = request.form['button']
         user = request.form['in_username']
@@ -37,13 +38,13 @@ def login():
             return redirect(url_for("blog"))
         else:
             error = "INVALID USERNAME AND/OR PASSWORD"
-            return render_template("login.html",error=error)
+            return render_template("home.html",error=error)
 
 @app.route("/logout")
 def logout():
     session['un'] = 0
     session['pw'] = 0
-    return render_template("home.html")
+    return redirect(url_for("home"))
 
 @app.route("/register")
 def register():

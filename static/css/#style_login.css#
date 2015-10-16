@@ -1,0 +1,8 @@
+.center_div{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.modal-footer {   
+    border-top: 0px; x
+}
