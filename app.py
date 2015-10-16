@@ -86,7 +86,7 @@ def write():
             return render_template("write.html")
     else:
         utils.Post(session['un'],request.form['title'],request.form['post_content'])
-        return render_template("blog.html")
+        return redirect(url_for("blog"))
 
 if __name__ == "__main__":
     app.debug = True
