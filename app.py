@@ -14,6 +14,10 @@ def home():
     else:
         return render_template("home.html")
 
+@app.route("/about")
+def about():
+    return render_template("about.html",un=session['un'])
+
 @app.route("/login",methods=["GET","POST"])
 def login():
     if request.method=="GET":
