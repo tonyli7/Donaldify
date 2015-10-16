@@ -23,7 +23,7 @@ def login():
     if request.method=="GET":
         if 'un' in session and session['un'] != 0:
             user = session['un']
-            return render_template("login.html",un=user)
+            return redirect(url_for("home"))
         else:
             return render_template("login.html",unlogged="You are not currently logged in.")
     else:
