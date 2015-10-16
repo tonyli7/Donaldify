@@ -72,8 +72,18 @@ def story(title=""):
         else:
             story = story[0]
             return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
-        
-    
+
+@app.route('/write', methods=["GET","POST"])
+def write():
+    if request.method=="GET":
+        if 'un' not in session or session['un']==0:
+            return redirect(url_for("home"))
+        else:
+            return render_template("write.html")
+        else:
+            utils.Post(session['un'],request.form['title'],request.form['post_content'])
+            return render_template("blog.html")
+
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "whatsthisfor"
