@@ -1,4 +1,4 @@
-#{INSERT PROJECTNAME}
+#bloggit
 Project 01: Bloginator
 
 # Roles
@@ -26,6 +26,8 @@ Middleware: Darwin Chiu
 - 10/14
   - the SQLite database functions for writing & viewing are written; only need to be implemented/connected
   - the "View All (Posts)" is working now!
+- 10/17
+  - homepage and login modal are complete
 
 # Reach Structure
 - Home (About) Page
