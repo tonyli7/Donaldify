@@ -17,7 +17,10 @@ def home():
 
 @app.route("/about")
 def about():
-    return render_template("about.html",un=session['un'])
+    if 'un' in session and session['un'] != 0:
+        return render_template("about.html",un=session['un'])
+    else:
+        return render_template("about.html")
 
 @app.route("/login",methods=["GET","POST"])
 def login():
