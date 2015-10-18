@@ -69,6 +69,7 @@ def logout():
     session['pw'] = 0
     return redirect(url_for("home"))
 
+"""
 # register funct adds un and pw to a database with them
 @app.route("/register",methods=["GET","POST"])
 def register():
@@ -89,12 +90,24 @@ def register():
         else:
             failure = "There is already an account with this username"
             return render_template("home.html",created=failure)
+"""
 
 # view all stories currently posted       
 @app.route("/blog", methods=["GET", "POST"])
 def blog():
-    if 'un' not in session or session['un']==0:
-        return redirect(url_for("home"))
+    if request.method=="GET":
+        if 'un' not in session or session['un']==0:
+            return redirect(url_for("home"))
+        else:
+            user = session['un']
+            s = ""
+            stories = utils.getAllPosts()
+            for p in stories:
+                s += "<h1> <a href='story/%s'> %s</a> </h1>" %(p[1], p[1])
+                s += "<h2> Posted by: %s </h2>" %p[0]
+                s += "<h3> %s </h3>" %p[2] + "<hr>"
+            s = Markup(s)
+            return render_template("blog.html",un=user,stories=s)
     else:
         user = session['un']
         s = ""
@@ -104,7 +117,13 @@ def blog():
             s += "<h2> Posted by: %s </h2>" %p[0]
             s += "<h3> %s </h3>" %p[2] + "<hr>"
         s = Markup(s)
-        return render_template("blog.html",un=user,stories=s)
+        if 'title' not in request.form:
+            return render_template("blog.html",un=user,stories=s)
+        else:
+            ti = request.form["title"]
+            con = request.form["post_content"]
+            utils.Post(user,ti,con)
+            return redirect(url_for("blog"))
 
 #view individual stories
 @app.route("/story/<title>", methods=["GET", "POST"])
