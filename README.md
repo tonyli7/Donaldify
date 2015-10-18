@@ -28,6 +28,9 @@ Middleware: Darwin Chiu
   - the "View All (Posts)" is working now!
 - 10/17
   - homepage and login modal are complete
+  - register is working!
+  - have a very nice login popup :)
+  - able to read & write posts now
 
 # Reach Structure
 - Home (About) Page
