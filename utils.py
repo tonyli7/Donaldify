@@ -1,6 +1,8 @@
 #Utilities File
 
-import sqlite3, md5
+import sqlite3
+import md5
+
 
 #hash password
 def encrypt(password):
