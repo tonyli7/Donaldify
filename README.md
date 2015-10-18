@@ -30,7 +30,8 @@ Middleware: Darwin Chiu
   - homepage and login modal are complete
   - register is working!
   - have a very nice login popup :)
-  - able to read & write posts now
+  - writing is now almost functional (is styled, backend funct is done, just need middle piece to connect)
+  - TODO: edit/delete/full writing functionality, styling
 
 # Reach Structure
 - Home (About) Page
