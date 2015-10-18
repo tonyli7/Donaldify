@@ -59,3 +59,77 @@ a {
 .navbar.navbar-fixed-top {
     background: rgba(0,0,0,0.7);
 }
+
+.boxed{
+    /*border: 3px solid rgba(0,0,0,0.7);*/
+    margin-top: 60px;
+    padding: 20px;
+    background-color: rgba(0,0,0,0.7);
+    color: rgb(255,255,255);
+}
+
+@import url(http://fonts.googleapis.com/css?family=Nunito);
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body { 
+  margin:0;
+  padding:0;
+	perspective: 1px;
+	transform-style: preserve-3d;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: Nunito;
+}
+
+.slide {
+  position: relative;
+  padding: 25vh 10%;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, .7);
+	transform-style: inherit;
+}
+
+.slide:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left:0;
+  right:0;
+}
+
+.title {
+  width: 50%;
+  padding: 5%;
+  border-radius: 5px;
+  background: rgba(240,230,220, .7);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+.slide, .slide:before {
+  background: 50% 50% / cover;  
+}
+
+#slide1:before {
+  background-image: url("../yellow-notebook-paper-texture.jpg");
+  transform: translateZ(-1px) scale(2);
+  z-index:-1;
+}
+
+#slide2 {
+  background-image: url("../composition.jpg");
+  background-attachment: fixed;
+}
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
