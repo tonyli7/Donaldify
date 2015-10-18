@@ -6,6 +6,7 @@ import sqlite3, utils
 #flask
 app = Flask(__name__)
 
+#link to the index; just a render_template & login
 @app.route("/", methods=["GET","POST"])
 @app.route("/home", methods=["GET","POST"])
 def home():
@@ -15,6 +16,7 @@ def home():
         #return render_template("home.html")
         return login()
 
+#link to the about page; just a render_template
 @app.route("/about")
 def about():
     if 'un' in session and session['un'] != 0:
@@ -22,6 +24,7 @@ def about():
     else:
         return render_template("about.html")
 
+#woo cool popup!
 @app.route("/login",methods=["GET","POST"])
 def login():
     if request.method=="GET":
@@ -43,12 +46,14 @@ def login():
             error = "INVALID USERNAME AND/OR PASSWORD"
             return render_template("home.html",error=error)
 
+# reset the username & pw in the session
 @app.route("/logout")
 def logout():
     session['un'] = 0
     session['pw'] = 0
     return redirect(url_for("home"))
 
+# register funct adds un and pw to a database with them
 @app.route("/register",methods=["GET","POST"])
 def register():
     if request.method=="GET":
@@ -68,7 +73,8 @@ def register():
         else:
             failure = "There is already an account with this username"
             return render_template("register.html",created=failure)
-       
+
+# view all stories currently posted       
 @app.route("/blog", methods=["GET", "POST"])
 def blog():
     if 'un' not in session or session['un']==0:
@@ -84,6 +90,7 @@ def blog():
         s = Markup(s)
         return render_template("blog.html",un=user,stories=s)
 
+#view individual stories
 @app.route("/story/<title>", methods=["GET", "POST"])
 def story(title=""):
     if 'un' not in session or session['un']==0:
@@ -98,6 +105,7 @@ def story(title=""):
             story = story[0]
             return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
 
+#write your own story
 @app.route('/write', methods=["GET","POST"])
 def write():
     if request.method=="GET":
@@ -109,6 +117,8 @@ def write():
         utils.Post(session['un'],request.form['title'],request.form['post_content'])
         return redirect(url_for("blog"))
 
+
+#running
 if __name__ == "__main__":
     app.debug = True
     app.secret_key = "whatsthisfor"
