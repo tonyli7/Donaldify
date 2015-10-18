@@ -13,8 +13,8 @@ def home():
     if 'un' in session and session['un'] != 0:
         return render_template("home.html",un=session['un'])
     else:
-        #return render_template("home.html")
-        return login()
+        return login_register()
+
 
 #link to the about page; just a render_template
 @app.route("/about")
@@ -26,7 +26,7 @@ def about():
 
 #woo cool popup!
 @app.route("/login",methods=["GET","POST"])
-def login():
+def login_register():
     if request.method=="GET":
         if 'un' in session and session['un'] != 0:
             user = session['un']
@@ -35,16 +35,32 @@ def login():
             return render_template("home.html",unlogged="You are not currently logged in.")
     else:
         #button = request.form['button']
-        user = request.form['in_username']
-        passwd = request.form['in_password']
+        if 'in_username' in request.form:
+            user = request.form['in_username']
+            passwd = request.form['in_password']
 
-        if utils.authenticate(user,passwd):
-            session['un'] = user
-            session['pw'] = passwd
-            return redirect(url_for("blog"))
+            if utils.authenticate(user,passwd):
+                session['un'] = user
+                session['pw'] = passwd
+                return redirect(url_for("blog"))
+            else:
+                error = "INVALID USERNAME AND/OR PASSWORD"
+                return render_template("home.html",error=error)
         else:
-            error = "INVALID USERNAME AND/OR PASSWORD"
-            return render_template("home.html",error=error)
+            user = request.form['regis_username']
+            passwd = request.form['regis_password']
+            conn = sqlite3.connect('bloginator.db')
+            c = conn.cursor()
+            c.execute('select * from users where username="'+user+'"')
+            r = c.fetchall()
+            conn.commit()
+            if len(r) == 0:
+                utils.newUser(user,passwd)
+                success = "Account Created!"
+                return render_template("home.html",created=success)
+            else:
+                failure = "There is already an account with this username"
+                return render_template("home.html",created=failure)
 
 # reset the username & pw in the session
 @app.route("/logout")
@@ -57,7 +73,7 @@ def logout():
 @app.route("/register",methods=["GET","POST"])
 def register():
     if request.method=="GET":
-        return render_template("register.html")
+        return render_template("home.html")
     else:
         user = request.form['regis_username']
         passwd = request.form['regis_password']
@@ -69,10 +85,10 @@ def register():
         if len(r) == 0:
             utils.newUser(user,passwd)
             success = "Account Created!"
-            return render_template("register.html",created=success)
+            return render_template("home.html",created=success)
         else:
             failure = "There is already an account with this username"
-            return render_template("register.html",created=failure)
+            return render_template("home.html",created=failure)
 
 # view all stories currently posted       
 @app.route("/blog", methods=["GET", "POST"])
