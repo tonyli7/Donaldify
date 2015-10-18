@@ -38,7 +38,6 @@ def login_register():
         if 'in_username' in request.form:
             user = request.form['in_username']
             passwd = request.form['in_password']
-
             if utils.authenticate(user,passwd):
                 session['un'] = user
                 session['pw'] = passwd
@@ -103,27 +102,18 @@ def blog():
             s = ""
             stories = utils.getAllPosts()
             for p in stories:
+                s += "<br>"
+                s += "<div class='boxed2 type center'>"
                 s += "<h1> <a href='story/%s'> %s</a> </h1>" %(p[1], p[1])
                 s += "<h2> Posted by: %s </h2>" %p[0]
-                s += "<h3> %s </h3>" %p[2] + "<hr>"
+                s += "<h3> %s </h3>" %p[2] + "</div><br>"
             s = Markup(s)
             return render_template("blog.html",un=user,stories=s)
     else:
-        user = session['un']
-        s = ""
-        stories = utils.getAllPosts()
-        for p in stories:
-            s += "<h1> <a href='story/%s'> %s</a> </h1>" %(p[1], p[1])
-            s += "<h2> Posted by: %s </h2>" %p[0]
-            s += "<h3> %s </h3>" %p[2] + "<hr>"
-        s = Markup(s)
-        if 'title' not in request.form:
-            return render_template("blog.html",un=user,stories=s)
-        else:
-            ti = request.form["title"]
-            con = request.form["post_content"]
-            utils.Post(user,ti,con)
-            return redirect(url_for("blog"))
+        ti = request.form["title"]
+        con = request.form["post_content"]
+        utils.Post(session['un'],ti,con)
+        return redirect(url_for("blog"))
 
 #view individual stories
 @app.route("/story/<title>", methods=["GET", "POST"])
@@ -140,6 +130,7 @@ def story(title=""):
             story = story[0]
             return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
 
+"""
 #write your own story
 @app.route('/write', methods=["GET","POST"])
 def write():
@@ -151,7 +142,7 @@ def write():
     else:
         utils.Post(session['un'],request.form['title'],request.form['post_content'])
         return redirect(url_for("blog"))
-
+"""
 
 #running
 if __name__ == "__main__":

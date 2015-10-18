@@ -42,9 +42,9 @@
     </div>
 
     <div id="slide1" class="slide">
-      <div class="boxed type">
+      <div class="boxed type" align="center">
    	<h1 align="center">Hi</h1>
-	<p align="center">
+	<p>
 	  <br>
 	  'what is bloggit', you might be wondering
 	  <br>
