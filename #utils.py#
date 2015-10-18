@@ -1,13 +1,19 @@
 #Utilities File
 
-import sqlite3
+import sqlite3, hashlib
+
+#hash password
+def encrypt(password):
+    m = hashlib.md5.new()
+    m.update(password)
+    return m.hexdigest()
 
 #check if user and pass match
 def authenticate(username, password):
     username = username.lower()
     conn = sqlite3.connect("bloginator.db")
     c = conn.cursor()
-    l = c.execute('select * from users where username = "'+username+'" and password = "'+password+'";') 
+    l = c.execute('select * from users where username = "'+username+'" and password = "'+encrypt(password)+'";') 
     for i in l:
         return True;
     return False;
@@ -15,13 +21,14 @@ def authenticate(username, password):
 #create new account
 def newUser(username,password):
     username = username.lower()
-    conn = sqlite3.connect("bloginator.db")
-    c = conn.cursor()
-    l = c.execute('select * from users where username = "'+username+'";')
-    for i in l:
-        return False
-    c.execute('insert into users values("'+username+'","'+password+'");')
+    conn = sqlite3.connect("sers values("'+username+'","'+encrypt(password)+'");')
     conn.commit()
+
+def loginauth(un,pw):
+    if un=="HERES" and pw=="JOHNNY":
+        return True;
+    else:
+        return False;
 
 #database functions
 

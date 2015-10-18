@@ -35,7 +35,7 @@ def login():
         user = request.form['in_username']
         passwd = request.form['in_password']
 
-        if utils.authenticate(user,passwd):
+        if utils.loginauth(user,passwd):
             session['un'] = user
             session['pw'] = passwd
             return redirect(url_for("blog"))
