@@ -1,12 +1,10 @@
 #Utilities File
 
-import sqlite3
-import md5
-
+import sqlite3, hashlib
 
 #hash password
 def encrypt(password):
-    m = md5.new()
+    m = hashlib.md5.new()
     m.update(password)
     return m.hexdigest()
 
