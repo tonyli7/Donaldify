@@ -37,14 +37,15 @@ Middleware: Darwin Chiu
   - write is working ! (+ a nice modal with that too :) )
   - formatted about & blog
   - redirect to blog & login after registration
+  - profile page is now added ~!@ (and styling for it is just about done)
 
 
 # ToDo
 - timestamps
 - likes
 - comments
-- profile page
 - sorting posts (via author, title, content, date, etc.)
+- very minor: make the username (link to profile) in navbar active on profile page
 
 # Reach Structure
 - Home (About) Page
