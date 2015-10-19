@@ -14,49 +14,24 @@
   
   <body>
 
-    <br>
-    <div class="container text-center">
-      {% if un %}
-      {{ un }}
-      {% endif %}
-    </div>
-
-
-    <div class="col-md-1 col-md-offset-5">
-      <a class="btn btn-default" href="logout" role="logout-btn">LOGOUT</a>
-    </div>
-
-    <div class="col-md-1">
-      <a class="btn btn-default" href="home" role="home-btn">HOME</a>
-    </div>
-<!--
     <div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-	  <div class="navbar-header">
-	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-	      <span class="icon-bar"></span>
-	    </button>
-	    <a class="navbar-brand" href="#">{{ un }}</a>
-	  </div>
-	  <div class="collapse navbar-collapse">
-	    <ul class="nav navbar-nav">
-              <li><a href="home">Home</a></li>
-              <li><a href="blog">Blog</a></li>
-	      <li><a href="about">About</a></li>
-	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="logout">Logout</a></li>
-	    </ul>
-	    
-	  </div>
+      <div class="container">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="blog"><font color="green">Go back to blog</font></a>
 	</div>
+      </div>
     </div>
-    <br><br>    
--->
-    <h1>{{title}}</h1>
-    <h2>Posted by: {{user}}</h2><br>
-    <h3>{{content}}</h3>
+    <div class="jumbotron3">
+      <div class="boxed2 type vertical" align="center">
+	<h2><u>{{title}}</u></h2>
+	<p>Posted by: {{user}}</p><br>
+	<h3 align="left">{{content}}</h3>
+      </div>
+    </div>
   </body>
   

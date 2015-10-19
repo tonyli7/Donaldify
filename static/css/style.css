@@ -22,6 +22,14 @@
     overflow: hidden;
 }
 
+.jumbotron3 {
+    background: linear-gradient( rgba(0,0,0,0.1), rgba(0,0,0,0.1) ), #000 url("../notebookpaper.jpg") center center;
+    background-repeat: repeat-y;
+    width: 100%;
+    background-size: cover;
+}
+
+
 button{
     margin: 0 auto;
 }
@@ -152,4 +160,9 @@ IMG.displayed {
     width: 190px;
     position: fixed;
     margin-left: 400 px;
+}
+
+.vertical {
+  position: relative;
+  top: 50%;
 }
