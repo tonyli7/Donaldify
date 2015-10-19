@@ -134,7 +134,10 @@ def members():
         s+= "%s" %u[0]
         s+= "</div>"
     s = Markup(s)
-    return render_template("members.html",members=s)
+    if 'un' in session and session['un'] != 0:
+        return render_template("members.html",members=s,un=session['un'])
+    else:
+        return render_template("members.html",members=s)
     
 #running
 if __name__ == "__main__":
