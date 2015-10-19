@@ -49,6 +49,13 @@ def getPost(title):
     c.execute('select * from post where title = "'+title+'"')
     return c.fetchall()
 
+#gets all posts from a user
+def getUserPosts(username):
+    conn = sqlite3.connect('bloginator.db')
+    c = conn.cursor()
+    c.execute('select * from post where user = "'+username+'"')
+    return c.fetchall()
+
 #how to read post table, for loop, index 0 is user, 1 is title, 2 is content
 
 #edits a post
