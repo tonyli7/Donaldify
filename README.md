@@ -39,11 +39,12 @@ Middleware: Darwin Chiu
   - redirect to blog & login after registration
   - profile page is now added ~!@ (and styling for it is just about done)
   - members is now fully functional
+  - Editing works
+  - Deleting works
 
 
 # Extra Features ToDo
-- delete posts
-- edit posts
+- Post IDs
 - timestamps on posts
 - likes on posts
 - comments on posts
