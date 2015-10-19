@@ -42,7 +42,8 @@
 	    <h2>{{title}}</h2>
             <form class="form col-md-12 center-block" id="input_form" method="POST">
               <div class="form-group">
-		<textarea id="post_content" class="form-control input-lg" rows="12" cols="20" name="post_content" form="input_form">{{content}} </textarea>
+		<textarea id="post_content" class="form-control input-lg" rows="12" cols="20" name="post_content" form="input_form" placeholder="Enter cont{{content}}
+		</textarea>
               </div>
               <div class="form-group">
 		<button name="button" type="submit" class="btn btn-warning btn-lg btn-block type" value="submitted">Submit</button>

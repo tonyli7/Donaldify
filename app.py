@@ -97,17 +97,22 @@ def blog():
 #view individual stories
 @app.route("/story/<title>", methods=["GET", "POST"])
 def story(title=""):
-    if 'un' not in session or session['un']==0:
-        return redirect(url_for("home"))
-    else:
-        user = session['un']
-        story = utils.getPost(title)
-        if len(story) == 0:
-            return redirect(url_for("blog"))
-            #return render_template("home.html")
+    if request.method=="GET":
+        if 'un' not in session or session['un']==0:
+            return redirect(url_for("home"))
         else:
-            story = story[0]
-            return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
+            user = session['un']
+            story = utils.getPost(title)
+            if len(story) == 0:
+                return redirect(url_for("blog"))
+                #return render_template("home.html")
+            else:
+                story = story[0]
+                return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
+    else:
+        content = request.form['post_content']
+        utils.edit(session['un'], title, content)
+        return redirect(url_for("profile"))
 
 #delete story
 @app.route("/delete/<user>/<title>", methods=["GET", "POST"])
