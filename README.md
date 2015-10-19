@@ -32,6 +32,19 @@ Middleware: Darwin Chiu
   - have a very nice login popup :)
   - writing is now almost functional (is styled, backend funct is done, just need middle piece to connect)
   - TODO: edit/delete/full writing functionality, styling
+- 10/18
+  - register is working ! (+ a nice modal)
+  - write is working ! (+ a nice modal with that too :) )
+  - formatted about & blog
+
+
+# ToDo
+- timestamps
+- likes
+- comments
+- profile page
+- sorting posts (via author, title, content, date, etc.)
+- after registration, autologin & redirect?
 
 # Reach Structure
 - Home (About) Page
