@@ -38,6 +38,7 @@ Middleware: Darwin Chiu
   - formatted about & blog
   - redirect to blog & login after registration
   - profile page is now added ~!@ (and styling for it is just about done)
+  - members is now fully functional
 
 
 # Extra Features ToDo
