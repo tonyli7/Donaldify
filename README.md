@@ -40,7 +40,7 @@ Middleware: Darwin Chiu
   - profile page is now added ~!@ (and styling for it is just about done)
 
 
-# ToDo
+# Extra Features ToDo
 - timestamps
 - likes
 - comments
