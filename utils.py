@@ -1,5 +1,6 @@
-#Utilities File
+""" Utilties FIle """
 
+#imports
 import sqlite3
 
 #check if user and pass match
@@ -7,9 +8,11 @@ def authenticate(username, password):
     username = username.lower()
     conn = sqlite3.connect("bloginator.db")
     c = conn.cursor()
-    l = c.execute('select * from users where username = "'+username+'" and password = "'+password+'";') 
+    l = c.execute('select * from users where username = "'+username+'" and password = "'+password+'";')
+    # if the un&pw combo exist, then login
     for i in l:
         return True;
+    # else, un&pw wrong
     return False;
 
 #create new account
@@ -18,12 +21,11 @@ def newUser(username,password):
     conn = sqlite3.connect("bloginator.db")
     c = conn.cursor()
     l = c.execute('select * from users where username = "'+username+'";')
+    # if there already exists such an acc, register doesn't work
     for i in l:
         return False
     c.execute('insert into users values("'+username+'","'+password+'");')
     conn.commit()
-
-#database functions
 
 #gets all posts from database
 def getAllPosts():
