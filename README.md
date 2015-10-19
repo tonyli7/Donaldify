@@ -44,7 +44,6 @@ Middleware: Darwin Chiu
 - comments
 - profile page
 - sorting posts (via author, title, content, date, etc.)
-- after registration, autologin & redirect?
 
 # Reach Structure
 - Home (About) Page
