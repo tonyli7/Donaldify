@@ -141,15 +141,3 @@ IMG.displayed {
     margin-left: auto;
     margin-right: auto 
 }
-
-.wrap {
-    width: 600px;
-    position: relative;
-    margin: 15 px auto;
-}
-
-.fixed {
-    width: 190px;
-    position: fixed;
-    margin-left: 400 px;
-}
