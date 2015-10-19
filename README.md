@@ -41,9 +41,11 @@ Middleware: Darwin Chiu
 
 
 # Extra Features ToDo
-- timestamps
-- likes
-- comments
+- delete posts
+- edit posts
+- timestamps on posts
+- likes on posts
+- comments on posts
 - sorting posts (via author, title, content, date, etc.)
 - very minor: make the username (link to profile) in navbar active on profile page
 
