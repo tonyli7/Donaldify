@@ -36,6 +36,7 @@ Middleware: Darwin Chiu
   - register is working ! (+ a nice modal)
   - write is working ! (+ a nice modal with that too :) )
   - formatted about & blog
+  - redirect to blog & login after registration
 
 
 # ToDo
