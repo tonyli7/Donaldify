@@ -13,22 +13,6 @@
   </head>
 
   <body>
-<!--
-    <br>
-    <div class="container text-center">
-      {% if un %}
-      {{ un }}
-      {% endif %}
-    </div>
-
-
-    <div class="col-md-1 col-md-offset-5">
-      <a class="btn btn-default" href="logout" role="logout-btn">LOGOUT</a>
-    </div>
-
-    <div class="col-md-1">
-      <a class="btn btn-default" href="home" role="home-btn">HOME</a>
-    </div> -->
 
     <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -47,6 +31,7 @@
               <li class="active"><a href="#">Blog</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
+	      <li><a data-toggle="modal" data-target="#writeModal"><font color="green">Write</font></a></li>
 	      <li><a href="logout">Logout</a></li>
 	    </ul>
 	  </div>
@@ -83,9 +68,6 @@
       <div class="jumbotron2">
 	<div align="center">
 	  <p> {{stories}} </p>
-	</div>
-	<div class="col-md-1">
-	  <button type="button" class="btn btn-default type" data-toggle="modal" data-target="#writeModal">Write</button>
 	</div>
       </div>
   </body>
