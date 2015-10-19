@@ -109,6 +109,15 @@ def story(title=""):
             story = story[0]
             return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
 
+#delete story
+@app.route("/delete/<user>/<title>", methods=["GET", "POST"])
+def delete(user="",title=""):
+    if 'un' not in session or session['un']==0:
+        return redirect(url_for("home"))
+    else:
+        utils.delete(user, title)
+        return redirect(url_for("profile"))
+
 
 # View your own Profile: display username, and list of post titles
 @app.route("/profile")

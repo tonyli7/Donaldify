@@ -73,9 +73,9 @@ def edit(user, title, new_content):
     c = conn.cursor()
     q = """
     UPDATE post
-    SET content="' + new_content +'"
-    WHERE user="'+ user + '"
-    AND title="'+ title + '"
+    SET content='""" + new_content +"""'
+    WHERE user='"""+ user + """'
+    AND title='"""+ title + """'
     """
     c.execute(q)
     conn.commit()
@@ -87,8 +87,8 @@ def delete(user, title):
     c = conn.cursor()
     q = """
     DELETE FROM post
-    WHERE user="'+ user +'"
-    AND title="'+ title +'" 
+    WHERE user='"""+ user +"""'
+    AND title='"""+ title +"""' 
     """
     c.execute(q)
     conn.commit()
