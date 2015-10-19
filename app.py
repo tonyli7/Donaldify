@@ -56,7 +56,9 @@ def login_register():
             if len(r) == 0:
                 utils.newUser(user,passwd)
                 success = "Account Created!"
-                return render_template("home.html",created=success)
+                session['un'] = user
+                session['pw'] = passwd
+                return redirect(url_for("blog"))
             else:
                 failure = "There is already an account with this username"
                 return render_template("home.html",created=failure)

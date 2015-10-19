@@ -145,7 +145,7 @@ def write():
 """
 
 @app.route("/profile")
-def profile:
+def profile():
     user = session['un']
     story = utils.getUserPosts(user)
     s = ""
