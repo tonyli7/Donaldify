@@ -70,29 +70,6 @@ def logout():
     session['pw'] = 0
     return redirect(url_for("home"))
 
-"""
-# register funct adds un and pw to a database with them
-@app.route("/register",methods=["GET","POST"])
-def register():
-    if request.method=="GET":
-        return render_template("home.html")
-    else:
-        user = request.form['regis_username']
-        passwd = request.form['regis_password']
-        conn = sqlite3.connect('bloginator.db')
-        c = conn.cursor()
-        c.execute('select * from users where username="'+user+'"')
-        r = c.fetchall()
-        conn.commit()
-        if len(r) == 0:
-            utils.newUser(user,passwd)
-            success = "Account Created!"
-            return render_template("home.html",created=success)
-        else:
-            failure = "There is already an account with this username"
-            return render_template("home.html",created=failure)
-"""
-
 # view all stories currently posted       
 @app.route("/blog", methods=["GET", "POST"])
 def blog():
@@ -132,20 +109,8 @@ def story(title=""):
             story = story[0]
             return render_template("story.html",un=user,title=story[1],user=story[0],content=story[2])
 
-"""
-#write your own story
-@app.route('/write', methods=["GET","POST"])
-def write():
-    if request.method=="GET":
-        if 'un' not in session or session['un']==0:
-            return redirect(url_for("home"))
-        else:
-            return render_template("write.html")
-    else:
-        utils.Post(session['un'],request.form['title'],request.form['post_content'])
-        return redirect(url_for("blog"))
-"""
 
+# View your own Profile: display username, and list of post titles
 @app.route("/profile")
 def profile():
     user = session['un']
