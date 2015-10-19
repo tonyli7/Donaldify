@@ -23,10 +23,13 @@
 }
 
 .jumbotron3 {
+    position: fixed;
     background: linear-gradient( rgba(0,0,0,0.1), rgba(0,0,0,0.1) ), #000 url("../notebookpaper.jpg") center center;
-    background-repeat: repeat-y;
+    background-repeat: no-repeat;
     width: 100%;
+    height: 100%;
     background-size: cover;
+    overflow: hidden;
 }
 
 
@@ -164,5 +167,6 @@ IMG.displayed {
 
 .vertical {
   position: relative;
-  top: 50%;
+  top: 40%;
+  transform: translateY(-50%);
 }
