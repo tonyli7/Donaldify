@@ -15,6 +15,13 @@ def authenticate(username, password):
     # else, un&pw wrong
     return False;
 
+#get all users
+def getUsers():
+    conn = sqlite3.connect("bloginator.db")
+    c = conn.cursor()
+    c.execute('select username from users')
+    return c.fetchall();
+
 #create new account
 def newUser(username,password):
     username = username.lower()

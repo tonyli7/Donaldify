@@ -123,6 +123,18 @@ def profile():
             return render_template("profile.html",un=user,stories=s)
     else:
         return render_template("profile.html",un=user)
+
+# View all Members
+@app.route("/members")
+def members():
+    users = utils.getUsers()
+    s = ""
+    for u in users:
+        s+= "<div type='boxed2 type center'>"
+        s+= "%s" %u[0]
+        s+= "</div>"
+    s = Markup(s)
+    return render_template("members.html",members=s)
     
 #running
 if __name__ == "__main__":
