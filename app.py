@@ -132,9 +132,9 @@ def profile():
     if len(story) != 0:
         s = ""
         for p in story:
-            s += "<h1> <a href='story/%s'> %s</a> </h1>" %(p[1], p[1])
-            s = Markup(s)
-            return render_template("profile.html",un=user,stories=s)
+            s += "<h1> <a href='story/%s'> %s</a> </h1><br>" %(p[1], p[1])
+        s = Markup(s)
+        return render_template("profile.html",un=user,stories=s)
     else:
         return render_template("profile.html",un=user)
 
