@@ -2,18 +2,35 @@
 
 #imports
 import sqlite3
+from pymongo import MongoClient
 
 #check if user and pass match
 def authenticate(username, password):
     username = username.lower()
-    conn = sqlite3.connect("bloginator.db")
-    c = conn.cursor()
-    l = c.execute('select * from users where username = "'+username+'" and password = "'+password+'";')
+    #conn = sqlite3.connect("bloginator.db")
+#---------------Mongo Stuff---------------
+    connection=MongoClient()
+    db=connection.Donaldify
+    db.users
+    cursor=db.users.find({'username':username,'password':password})
+    userlist=[]
+    for doc in cursor:
+        for i in doc:
+            userlist+=[str(i)]
+    if 'username' and 'password' in userlist:
+        return True
+    return False
+    
+
+    #print db.collection_name()
+#-----------------------------------------
+    #c = conn.cursor()
+    #l = c.execute('select * from users where username = "'+username+'" and password = "'+password+'";')
     # if the un&pw combo exist, then login
-    for i in l:
-        return True;
+    #for i in l:
+    #    return True;
     # else, un&pw wrong
-    return False;
+    #return False;
 
 #get all users
 def getUsers():
