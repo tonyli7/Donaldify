@@ -42,14 +42,28 @@ def getUsers():
 #create new account
 def newUser(username,password):
     username = username.lower()
-    conn = sqlite3.connect("bloginator.db")
-    c = conn.cursor()
-    l = c.execute('select * from users where username = "'+username+'";')
-    # if there already exists such an acc, register doesn't work
-    for i in l:
+    #conn = sqlite3.connect("bloginator.db")
+    #c = conn.cursor()
+    #l = c.execute('select * from users where username = "'+username+'";')
+#-----------------------Mongo stuff-----------------------------
+    connection=MongoClient()
+    db=connection.Donaldify
+    db.users
+    cursor=db.users.find({'username':username,'password':password})
+    userlist=[]
+    for doc in cursor:
+        for i in doc:
+            userlist+=[str(i)]
+    if 'username' in userlist:
         return False
-    c.execute('insert into users values("'+username+'","'+password+'");')
-    conn.commit()
+    db.users.insert_one({"username":username,"password":password})
+    return True
+#---------------------------------------------------------------
+    # if there already exists such an acc, register doesn't work
+    #for i in l:
+    #    return False
+    #c.execute('insert into users values("'+username+'","'+password+'");')
+    #conn.commit()
 
 #gets all posts from database
 def getAllPosts():

@@ -48,13 +48,12 @@ def login_register():
         else:
             user = request.form['regis_username']
             passwd = request.form['regis_password']
-            conn = sqlite3.connect('bloginator.db')
-            c = conn.cursor()
-            c.execute('select * from users where username="'+user+'"')
-            r = c.fetchall()
-            conn.commit()
-            if len(r) == 0:
-                utils.newUser(user,passwd)
+           # conn = sqlite3.connect('bloginator.db')
+           # c = conn.cursor()
+           # c.execute('select * from users where username="'+user+'"')
+           # r = c.fetchall()
+           # conn.commit()
+            if utils.newUser(user,passwd):
                 success = "Account Created!"
                 session['un'] = user
                 session['pw'] = passwd
