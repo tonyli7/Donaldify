@@ -1,5 +1,5 @@
 # imports
-
+#STUFF AOJASKSJAKLJSJALSJLAJALJS
 from flask import Flask, render_template, request, session, redirect, url_for,Markup
 import sqlite3, utils
 
